@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Job
 from django.contrib.auth import get_user_model
-from user.serializers import UserSerializer
+from users.serializers import UserSerializer
 
 class JobSerializer(serializers.ModelSerializer):
     
