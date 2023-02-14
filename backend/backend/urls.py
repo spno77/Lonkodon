@@ -10,4 +10,5 @@ urlpatterns = [
 
 	path('api/v1/',include('users.urls')),
 	path('api/v1/',include('jobs.urls')),
+	path('api/v1/',include('articles.urls')),
 ]
