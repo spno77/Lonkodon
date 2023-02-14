@@ -51,4 +51,16 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 	def __str__(self):
 		return self.username
+
+
+class Message(models.Model):
 	
+	message   = models.CharField(max_length=100)
+	send_date = models.DateField(auto_now=True)
+
+	sender   = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,related_name='sender')
+	receiver = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,related_name='receiver')
+
+	def __str__(self):
+		return self.message
+

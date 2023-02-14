@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,Message
 from django.contrib.auth import get_user_model
 
 #from rest_auth.registration.serializers import RegisterSerializer
@@ -26,3 +26,9 @@ class CustomRegisterSerializer(RegisterSerializer):
 	
 		return data_dict
 '''
+
+class MessageSerializer(serializers.ModelSerializer):
+	
+	class Meta:
+		model = Message
+		fields = ['id','username','message','send_date','receiver']
