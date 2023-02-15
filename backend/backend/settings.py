@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # Local apps    
     'jobs',
     'users',
-    'articles'
+    'articles',
 
 ]
 
