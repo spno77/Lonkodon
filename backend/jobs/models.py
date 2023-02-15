@@ -14,3 +14,14 @@ class Job(models.Model):
     def __str__(self):
         return self.title
     
+
+class Application(models.Model):
+
+    applicant = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name="applicant")
+    job       = models.ForeignKey(Job,on_delete=models.CASCADE,related_name="job")
+
+    date_applied = models.DateField(auto_now=True)
+   
+    def __str__(self):
+       return f"user{self.applicant} applied to job {self.job}"
+   
