@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import User,Message,Connection
 from django.contrib.auth import get_user_model
+from PIL import Image
 
 #from rest_auth.registration.serializers import RegisterSerializer
 
@@ -9,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = get_user_model()
 		fields = ['id','username','email','firstname','lastname',
-		'is_staff','phone',]
+		'is_staff','phone','image']
 
 '''
 class CustomRegisterSerializer(RegisterSerializer):

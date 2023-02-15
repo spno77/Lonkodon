@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
 )
 
 from django.contrib.auth import get_user_model
+from PIL import Image
 
 # User manager
 class UserManager(BaseUserManager):
@@ -34,12 +35,13 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser,PermissionsMixin):
 
-	username    = models.CharField(db_index=True,unique=True,null=False,max_length=20)
-	email       = models.EmailField(db_index=True,unique=True,max_length=50)
-	is_staff    = models.BooleanField(default=False)
-	firstname   = models.CharField(max_length=50,null=False)
-	lastname    = models.CharField(max_length=50,null=False)
-	phone       = models.CharField(max_length=20,null=False)
+	username   = models.CharField(db_index=True,unique=True,null=False,max_length=20)
+	email      = models.EmailField(db_index=True,unique=True,max_length=50)
+	is_staff   = models.BooleanField(default=False)
+	firstname  = models.CharField(max_length=50,null=False)
+	lastname   = models.CharField(max_length=50,null=False)
+	phone      = models.CharField(max_length=20,null=False)
+	image      = models.ImageField(default='blankuser.png',upload_to='images')		
 
 	objects = UserManager()
 
@@ -48,6 +50,13 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 	def save(self,*args,**kwargs):
 		super().save(*args, **kwargs)
+
+		img = Image.open(self.image.path)
+
+		if img.height > 300 or img.width:
+			output_size = (300,300)
+			img.thumbnail(output_size)
+			img.save(self.image.path)
 
 	def __str__(self):
 		return self.username
