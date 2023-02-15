@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,Message
+from .models import User,Message,Connection
 from django.contrib.auth import get_user_model
 
 #from rest_auth.registration.serializers import RegisterSerializer
@@ -32,3 +32,11 @@ class MessageSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Message
 		fields = ['id','username','message','send_date','receiver']
+
+
+
+class ConnectionSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Connection
+		fields = ['id','source','target','is_approved','send_date']

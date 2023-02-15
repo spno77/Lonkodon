@@ -64,3 +64,14 @@ class Message(models.Model):
 	def __str__(self):
 		return self.message
 
+
+class Connection(models.Model):
+
+	is_approved = models.BooleanField(default=False)
+	send_date   = models.DateField(auto_now=True)
+
+	source      = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='source')
+	target      = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='target')
+
+	def __str__(self):
+		return f'{self.source} sent a request to {self.target}'
