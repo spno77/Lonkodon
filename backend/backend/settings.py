@@ -40,9 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  #django all-auth
 
     # 3rd party apps
     'rest_framework',
+    'dj_rest_auth',     #login - logout endpoints
+    'rest_framework.authtoken',
+
+    #user registration
+    'allauth',  
+    'allauth.account',  
+    'allauth.socialaccount',  
+    'dj_rest_auth.registration', 
     
     # Local apps    
     'jobs',
@@ -74,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request', # all-auth
             ],
         },
     },
@@ -142,4 +152,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter'
+ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter' # for custom user registration
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # all auth
+
+SITE_ID = 1 #all-auth
+
+REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+}

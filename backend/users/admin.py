@@ -81,3 +81,4 @@ admin.site.register(User,UserAdmin)
 admin.site.register(Message)
 admin.site.register(Connection)
 
+admin.site.unregister(Group)
