@@ -51,13 +51,12 @@ INSTALLED_APPS = [
     'allauth',  
     'allauth.account',  
     'allauth.socialaccount',  
-    'dj_rest_auth.registration', 
-    
+    'dj_rest_auth.registration',
+   
     # Local apps    
     'jobs',
     'users',
     'articles',
-
 ]
 
 MIDDLEWARE = [
@@ -158,8 +157,13 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # all auth
 
 SITE_ID = 1 #all-auth
 
-REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
+#REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
 
-REST_AUTH_REGISTER_SERIALIZERS = {
+#REST_AUTH_REGISTER_SERIALIZERS = {
+#    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+#}
+
+REST_AUTH = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
     'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
 }
