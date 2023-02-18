@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'rest_framework',
-    'dj_rest_auth',     #login - logout endpoints
+    'dj_rest_auth',         #login - logout endpoints
     'rest_framework.authtoken',
 
     #user registration
@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  
     'dj_rest_auth.registration',
    
+    #cors headers
+    'corsheaders',
+
     # Local apps    
     'jobs',
     'users',
@@ -67,6 +70,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Cors headers middleware
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.urls'
