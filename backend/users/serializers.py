@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = get_user_model()
 		fields = ['id','username','email','firstname','lastname',
-		'is_staff','phone','image']
+		'is_staff','phone','image','employment','position']
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -22,8 +22,8 @@ class CustomRegisterSerializer(RegisterSerializer):
 	phone      = serializers.CharField()
 	phone      = serializers.CharField()
 	image      = serializers.ImageField()
-	#employment = serializers.CharField()
-	#position   = serializers.CharField()
+	employment = serializers.CharField()
+	position   = serializers.CharField()
 	
 	def get_cleaned_data(self):
 		data_dict = super().get_cleaned_data()
@@ -31,8 +31,8 @@ class CustomRegisterSerializer(RegisterSerializer):
 		data_dict['lastname']   = self.validated_data.get('lastname', '')
 		data_dict['phone']      = self.validated_data.get('phone', '')
 		data_dict['image']      = self.validated_data.get('image', '')
-		#data_dict['employment'] = self.validated_data.get('employment', '')
-		#data_dict['position']   = self.validated_data.get('position', '')
+		data_dict['employment'] = self.validated_data.get('employment', '')
+		data_dict['position']   = self.validated_data.get('position', '')
 
 		return data_dict
 

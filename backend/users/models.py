@@ -35,13 +35,15 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser,PermissionsMixin):
 
-	username   = models.CharField(db_index=True,unique=True,null=False,max_length=20)
-	email      = models.EmailField(db_index=True,unique=True,max_length=50)
-	is_staff   = models.BooleanField(default=False)
-	firstname  = models.CharField(max_length=50,null=False)
-	lastname   = models.CharField(max_length=50,null=False)
-	phone      = models.CharField(max_length=20,null=False)
-	image      = models.ImageField(default='blankuser.png',upload_to='images')		
+	username   =  models.CharField(db_index=True,unique=True,null=False,max_length=20)
+	email      =  models.EmailField(db_index=True,unique=True,max_length=50)
+	is_staff   =  models.BooleanField(default=False)
+	firstname  =  models.CharField(max_length=50,null=False)
+	lastname   =  models.CharField(max_length=50,null=False)
+	phone      =  models.CharField(max_length=20,null=False)
+	image      =  models.ImageField(default='blankuser.png',upload_to='images')		
+	employment =  models.CharField(max_length=50,null=True)
+	position   =  models.CharField(max_length=50,null=True)
 
 	objects = UserManager()
 
