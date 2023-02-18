@@ -161,4 +161,18 @@ SITE_ID = 1 #all-auth
 REST_AUTH = {
     'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
     'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'my-app-auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=25),
 }
