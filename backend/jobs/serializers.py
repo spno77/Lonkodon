@@ -17,7 +17,7 @@ class JobSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
 
     applicant = UserSerializer(read_only=True)
-    job       = JobSerializer(read_only=True)
+    #job       = JobSerializer(read_only=True)
 
     class Meta:
         model = Application
