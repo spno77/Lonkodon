@@ -6,6 +6,12 @@ import UserRegisterView from '../views/User/UserRegisterView'
 import UserLoginView    from '../views/User/UserLoginView'
 import UserProfileView  from '../views/User/UserProfileView'
 
+// messages routes
+import MessagesView from '../views/Messages/MessagesView'
+
+// connctions routes
+import ConnectionsView from '../views/Connections/ConnectionsView'
+
 const routes = [
   {
     path: '/',
@@ -35,6 +41,18 @@ const routes = [
         path: '/profile/',
         name: 'Profile',
         component: UserProfileView,
+        props: true
+      },
+      {
+        path: '/messages/',
+        name: 'Messages',
+        component: MessagesView,
+        props: true
+      },
+      {
+        path: '/connections/',
+        name: 'Connections',
+        component: ConnectionsView,
         props: true
       },
     ],
