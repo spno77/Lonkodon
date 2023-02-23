@@ -1,6 +1,48 @@
 <template>
   <v-toolbar density="compact" color="cyan">      
+    
+    <v-toolbar-title>Lonkodon</v-toolbar-title>
 
+    <v-btn icon :to="{name: 'Messages'}">
+      <v-icon >mdi-message </v-icon>
+    </v-btn>
+
+    <v-btn to="/connections">  Connections   </v-btn>
+    <v-btn>  Articles   </v-btn>
+
+    <v-btn icon>
+      <v-icon> mdi-dots-vertical </v-icon>
+
+    <v-menu activator="parent">
+      <v-list>
+      
+        <v-list-item :to="{name: 'Register'}">
+          <v-list-item-title>
+            <v-btn color="cyan" block> Register </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+
+        <v-list-item :to="{name: 'Profile'}">
+          <v-list-item-title>
+            <v-btn color="cyan" block> Profile </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+
+        <v-list-item :to="{name: 'Login'}">
+          <v-list-item-title>
+            <v-btn color="cyan" block> Log in </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+        
+        <v-list-item>
+          <v-list-item-title>
+            <v-btn color="cyan" block> Log out </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+      
+    </v-menu>
+ </v-btn>
 </v-toolbar>
 </template>
 

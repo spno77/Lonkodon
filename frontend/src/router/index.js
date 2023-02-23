@@ -33,7 +33,7 @@ const routes = [
       },
       {
         path: '/login/',
-        name: 'UserLoginView',
+        name: 'Login',
         component: UserLoginView,
         props: true
       },
