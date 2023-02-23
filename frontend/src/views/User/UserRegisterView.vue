@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-md-center mt-5"> Registration </h1>
+    <h1 class="text-md-center mt-10"> Registration </h1>
    
     <v-container class="mt-3" >
         <v-form>
@@ -83,7 +83,7 @@
     </v-btn>
      
     </v-container>
-    
+
  </template>
  
  <script>

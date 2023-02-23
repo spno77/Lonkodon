@@ -41,8 +41,8 @@
 
 <style scoped>
 
-h1{
-    color: rgb(42, 137, 137); 
-   }
+    h1{
+        color: rgb(42, 137, 137); 
+    }
 
 </style>
