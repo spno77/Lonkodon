@@ -18,26 +18,29 @@
       </v-form>
     </v-sheet>
 
-    <v-btn color="cyan"   rounded="lg"
+    <v-btn @click ="useAppStore.login(user)" color="cyan"   rounded="lg"
          :style="{left: '50%', transform:'translateX(-50%)'}"> 
                     Login
     </v-btn>
 
 </template>
   
-  <script>
+<script>
+
+//import { useAppStore } from '@store';
+
     export default {
-     data(){
-      return{
-          user:{
-              username: '',
-              password: '',
-              is_staff: null
-          },
-      }
-     }
+        data(){
+            return{
+                user:{
+                    username: '',
+                    password: '',
+                    is_staff: null
+            },
+        }
     }
-  </script>
+}
+</script>
 
 <style scoped>
 
