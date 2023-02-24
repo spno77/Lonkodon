@@ -1,5 +1,5 @@
 <template>
-    <h1>User profile </h1>
+    <h1> {{ user.username }} </h1>
     
     <div class="card">
         <v-card width="840" class="ma-auto">
@@ -7,7 +7,7 @@
                 <v-col>
                     <h2 class="ma-3">Firsname: <b class="ma-3"> {{ user.firstname  }} </b>  </h2> 
                     <h2 class="ma-3">Lastname: <b class="ma-1"> {{ user.lastname   }} </b>  </h2>
-                    <h2 class="ma-3">Email:    <b class="ma-4"> {{   user.email    }} </b>  </h2>
+                    <h2 class="ma-3">Email:    <b class="ma-4"> {{ user.email    }} </b>  </h2>
                 </v-col>
        
                 <v-col>

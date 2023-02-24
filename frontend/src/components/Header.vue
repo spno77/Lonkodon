@@ -16,7 +16,7 @@
     <v-menu activator="parent">
       <v-list>
       
-        <v-list-item :to="{name: 'Register'}">
+        <v-list-item v-if="!isLoggedIn" :to="{name: 'Register'}">
           <v-list-item-title>
             <v-btn color="cyan" block> Register </v-btn>
           </v-list-item-title>
@@ -28,13 +28,13 @@
           </v-list-item-title>
         </v-list-item>
 
-        <v-list-item :to="{name: 'Login'}">
+        <v-list-item v-if="!isLoggedIn" :to="{name: 'Login'}">
           <v-list-item-title>
             <v-btn color="cyan" block> Log in </v-btn>
           </v-list-item-title>
         </v-list-item>
         
-        <v-list-item>
+        <v-list-item v-if="isLoggedIn">
           <v-list-item-title>
             <v-btn @click.prevent="logoutUser" color="cyan" block> Log out </v-btn>
           </v-list-item-title>
