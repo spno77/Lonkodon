@@ -22,7 +22,7 @@
           </v-list-item-title>
         </v-list-item>
 
-        <v-list-item :to="{name: 'Profile'}">
+        <v-list-item v-if="isLoggedIn" :to="{name: 'Profile', params:{id: loggedUser.user.id } }">
           <v-list-item-title>
             <v-btn color="cyan" block> Profile </v-btn>
           </v-list-item-title>
@@ -55,7 +55,7 @@ export default{
 
   computed:{
       ...mapStores(useAppStore),
-      ...mapState(useAppStore,['user'])
+      ...mapState(useAppStore,['user','loggedUser','isLoggedIn']),
     },
     methods:{
       ...mapActions(useAppStore,['logoutUser'])

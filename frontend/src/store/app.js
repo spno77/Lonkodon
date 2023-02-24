@@ -9,7 +9,8 @@ export const useAppStore = defineStore('app', {
   }),
 
   getters: {
-    loggedUser:(state) => state.user
+    loggedUser:(state) => state.user,
+   
   },
 
   actions: {
@@ -18,12 +19,15 @@ export const useAppStore = defineStore('app', {
         	 .then((response) => {
               this.user = response.data
             })
+            this.isLoggedIn = true
+            console.log(this.isLoggedIn)
     },
 
     logoutUser(){
       axios.post('http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/')
+      this.isLoggedIn = false
     },
     
-    },
+  },
 
 })
