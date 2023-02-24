@@ -119,7 +119,7 @@ import axios from 'axios';
             }
         },
         methods: {
-            
+
             onFileSelected(event){
                 this.user.image = event.target.files[0]     
             },
@@ -136,7 +136,7 @@ import axios from 'axios';
         
                 fd.append('employment' ,this.user.employment)
                 fd.append('position'   ,this.user.position)
-                fd.append('image'     ,this.user.image,this.user.image.name)
+                fd.append('image'      ,this.user.image,this.user.image.name)
        
                 axios
                     .post('http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/',fd)

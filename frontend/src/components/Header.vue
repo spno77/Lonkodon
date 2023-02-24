@@ -36,7 +36,7 @@
         
         <v-list-item>
           <v-list-item-title>
-            <v-btn color="cyan" block> Log out </v-btn>
+            <v-btn @click.prevent="logoutUser" color="cyan" block> Log out </v-btn>
           </v-list-item-title>
         </v-list-item>
       </v-list>
@@ -47,7 +47,22 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapStores } from 'pinia';
+import { useAppStore } from '@/store/app';
+
 export default{
-  name: 'Header'
+  name: 'Header',
+
+  computed:{
+      ...mapStores(useAppStore),
+      ...mapState(useAppStore,['user'])
+    },
+    methods:{
+      ...mapActions(useAppStore,['logoutUser'])
+    }
+
+
+
+
 }
 </script>

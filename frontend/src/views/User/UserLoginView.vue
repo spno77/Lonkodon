@@ -18,7 +18,7 @@
       </v-form>
     </v-sheet>
 
-    <v-btn @click ="useAppStore.login(user)" color="cyan"   rounded="lg"
+    <v-btn @click.prevent ="loginUser(this.user)" color="cyan"   rounded="lg"
          :style="{left: '50%', transform:'translateX(-50%)'}"> 
                     Login
     </v-btn>
@@ -26,21 +26,34 @@
 </template>
   
 <script>
+import { mapActions, mapState, mapStores } from 'pinia';
+import { useAppStore } from '@/store/app';
 
-//import { useAppStore } from '@store';
-
-    export default {
-        data(){
-            return{
-                user:{
-                    username: '',
-                    password: '',
-                    is_staff: null
-            },
-        }
+ export default {
+    data() {
+      return {
+        user:{
+          username: '',
+          password: '',
+          is_staff: null
+        },
+      }
+    },
+    computed:{
+      ...mapStores(useAppStore),
+      ...mapState(useAppStore,['user'])
+    },
+    methods:{
+      ...mapActions(useAppStore,['loginUser'])
     }
-}
+  
+      
+  }
+
+
+
 </script>
+
 
 <style scoped>
 
