@@ -39,6 +39,8 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 class MessageSerializer(serializers.ModelSerializer):
 	
+	sender = UserSerializer(read_only=True)
+
 	class Meta:
 		model = Message
 		fields = ['id','message','send_date','sender','receiver']

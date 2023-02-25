@@ -142,6 +142,7 @@ import axios from 'axios';
                     .post('http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/',fd)
                     .then( response => {
                         alert("User " + this.user.username  +" successfully registered")
+                        this.$router.push('/login')
                     })
                     .catch((err) => {
                         console.log(err.response.data);
@@ -158,9 +159,6 @@ import axios from 'axios';
             },
         }
   }
-   
-   
-   
    
 
  </script>

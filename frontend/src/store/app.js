@@ -6,6 +6,7 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     user: {},
     isLoggedIn: false,
+    token: '',
   }),
 
   getters: {
@@ -15,12 +16,11 @@ export const useAppStore = defineStore('app', {
 
   actions: {
     loginUser (user) {
-      axios.post('http://127.0.0.1:8000/api/v1/dj-rest-auth/login/',user)	
+       axios.post('http://127.0.0.1:8000/api/v1/dj-rest-auth/login/',user)	
         	 .then((response) => {
               this.user = response.data
             })
             this.isLoggedIn = true
-            console.log(this.isLoggedIn)
     },
 
     logoutUser(){
