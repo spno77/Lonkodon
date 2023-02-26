@@ -1,9 +1,40 @@
 <template>
     <h1>My messages</h1>
     
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="8">
+          <v-container class="max-width">
+            <v-pagination
+              v-model="page"
+              class="my-4"
+              :length="15"
+            ></v-pagination>
+          </v-container>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <div v-for="message in messages">
-        <v-alert class="myAlert" color="cyan" width="640">
-            {{ message.message }}
+
+        <v-alert class="myAlert" color="cyan" 
+            width="640"
+            border="start"
+        >
+            <div class="sender">                 
+                <v-avatar
+                    class="avatar1" 
+                    size=40 
+                    :image="message.sender.image"> 
+                </v-avatar>
+
+                <b>{{ message.sender.username }}:</b> 
+                    {{ message.message }}
+                <div class="button1">
+                    <v-btn color="success" rounded="lg" :style="{left: '20%', transform:'translateX(-35%)'}"> reply </v-btn>
+                </div>
+            </div>
+           
         </v-alert>
     </div>
 
@@ -21,6 +52,7 @@ data() {
         messages:   [],
         perPage:     3,
         currentPage: 1,
+        page:        1,
     }
 },
 
@@ -59,7 +91,20 @@ h1{
 
 .myAlert{
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 440px;
 }
+
+.button1{
+    float:right ;
+}
+
+.sender{
+    font-size: 19px;
+}
+
+.avatar1 {
+    margin-right: 8px;
+}
+
 
 </style>
