@@ -6,16 +6,16 @@
         <v-col cols="8">
           <v-container class="max-width">
             <v-pagination
-              v-model="page"
+              v-model="pageNo"
               class="my-4"
-              :length="15"
+              :length="numPages"
             ></v-pagination>
           </v-container>
         </v-col>
       </v-row>
     </v-container>
 
-    <div v-for="message in messages">
+    <div v-for="(message, index) in pagedMessages" :key="index">
 
         <v-alert class="myAlert" color="cyan" 
             width="640"
@@ -50,9 +50,8 @@ export default{
 data() {
     return{
         messages:   [],
-        perPage:     3,
-        currentPage: 1,
-        page:        1,
+        pageSize:    5,
+        pageNo:      1,
     }
 },
 
@@ -60,14 +59,16 @@ computed:{
     ...mapStores(useAppStore),
     ...mapState(useAppStore,['user']),
 
-    rows(){
-        return this.messages.length
+    numPages() {
+        return Math.ceil(this.messages.length / this.pageSize);
     },
 
-    pageCount(){
-        return this.messages.length / this.perPage
-    }
+    pagedMessages() {      
+        const startIndex = (this.pageNo - 1) * this.pageSize;
+        const data = [...this.messages];
 
+        return data.splice(startIndex, this.pageSize);
+      }
 },
 
 mounted(){
@@ -105,6 +106,5 @@ h1{
 .avatar1 {
     margin-right: 8px;
 }
-
 
 </style>

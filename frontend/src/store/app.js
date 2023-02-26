@@ -25,7 +25,9 @@ export const useAppStore = defineStore('app', {
 
     logoutUser(){
       axios.post('http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/')
+      
       this.isLoggedIn = false
+      this.user = null
     },
     
   },
