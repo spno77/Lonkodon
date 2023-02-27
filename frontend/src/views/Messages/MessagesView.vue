@@ -3,14 +3,14 @@
     <h1>My messages</h1>
 
     <div v-show="showReply" class="message">
-        <MessageReplyView> </MessageReplyView>
+        <MessageReplyView :receiver="msgSender"> </MessageReplyView>
     </div>
     
-    <v-container class="cont">
+    <v-container class="cont" >
       <v-row justify="center">
         <v-col cols="8">
           <v-container class="max-width">
-            <v-pagination
+            <v-pagination  @click="showReplyFalse()"
               v-model="pageNo"
               class="my-4"
               :length="numPages"
@@ -31,18 +31,24 @@
                     class="avatar1" 
                     size=40 
                     :image="message.sender.image"> 
-                </v-avatar>
+                </v-avatar> 
 
                 <b>{{ message.sender.username }}:</b> 
                     {{ message.message }}
+                
                 <div class="button1">
-                    <v-btn color="success" rounded="lg" :style="{left: '20%', transform:'translateX(-35%)'}"> reply </v-btn>
+                    <v-btn @click.prevent="showReplyTrue(); setSender(message.sender.id);"
+                        color="success" rounded="lg" 
+                        :style="{left: '20%', transform:'translateX(-35%)'}"> 
+                            reply 
+                    </v-btn>
                 </div>
-            </div>
-           
+                
+            </div>       
         </v-alert>
+
     </div>
-    
+
 </template>
 
 <script>
@@ -62,7 +68,22 @@ data() {
         messages:   [],
         pageSize:    5,
         pageNo:      1,
-        showReply: false,
+        showReply:  false,
+        msgSender:  0,
+    }
+},
+
+methods:{
+	showReplyTrue(){
+		this.showReply = true
+	},
+
+    showReplyFalse(){
+        this.showReply = false
+    },
+
+    setSender(senderId){
+        this.msgSender = senderId
     }
 },
 
@@ -79,7 +100,7 @@ computed:{
         const data = [...this.messages];
 
         return data.splice(startIndex, this.pageSize);
-      }
+    }
 },
 
 mounted(){

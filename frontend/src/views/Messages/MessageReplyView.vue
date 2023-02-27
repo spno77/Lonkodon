@@ -1,40 +1,68 @@
 <template>
-        <v-text-field
-            class="myInput" 
-            color="cyan"
-            v-model="user1"
-            label="Reply"
-        ></v-text-field>
+    <v-text-field
+        class="myInput" 
+        color="cyan"
+        v-model="message"
+        label="Reply"
+    ></v-text-field>
 
-        <v-btn class="myButton" 
-               color="cyan" rounded="lg"
-               :style="{left: '50%', transform:'translateX(-50%)'}"
-        > 
-            Reply
-       </v-btn>
-
+    <v-btn class="myButton" @click="replyMessage()"
+        color="cyan" rounded="lg"
+        :style="{left: '50%', transform:'translateX(-50%)'}"
+    > 
+        Send
+    </v-btn>
 </template>
 
 <script>
-export default{
-    data(){
-        return{
-            user1: ""
-        }
+import axios from 'axios';
+import { mapState, mapStores } from 'pinia';
+import { useAppStore } from '@/store/app';
 
+export default{
+
+data(){
+    return{
+        message: ""
     }
+},
+
+props:['receiver'],
+
+methods:{
+
+    replyMessage(){
+        axios.
+            post('http://127.0.0.1:8000/api/v1/messages/',{
+                message:  this.message,
+                sender:   this.user.id,
+                receiver: this.receiver
+            },
+                {headers: {'Authorization': 'Bearer ' + this.user.access_token}}  
+            )
+            .catch((err) => {
+             console.log(err.response.data);
+            })
+
+            this.message = ""
+    }
+},
+
+computed:{
+    ...mapStores(useAppStore),
+    ...mapState(useAppStore,['user'])
+},
+
 }
 
 </script>
 
 <style scoped>
-
 .myInput{
     height: 660px;
     width: 400px;
     margin-top: 30px;
 }
-
 .myButton{
     margin-top: -500px;
 }
