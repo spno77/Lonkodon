@@ -64,7 +64,7 @@ computed:{
     margin-top: 30px;
 }
 .myButton{
-    margin-top: -500px;
+    margin-top: -450px;
 }
 
 h1{

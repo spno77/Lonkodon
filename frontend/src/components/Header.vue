@@ -6,7 +6,7 @@
     <v-btn icon :to="{name: 'Messages'}">
       <v-icon >mdi-message </v-icon>
     </v-btn>
-
+    
     <v-btn to="/connections">  Connections   </v-btn>
     <v-btn>  Articles   </v-btn>
 

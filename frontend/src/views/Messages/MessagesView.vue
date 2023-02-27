@@ -23,7 +23,7 @@
     <div v-for="(message, index) in pagedMessages" :key="index">
 
         <v-alert class="myAlert" color="cyan" 
-            width="640"
+            width="700"
             border="start"
         >
             <div class="sender">                 
@@ -36,6 +36,10 @@
                 <b>{{ message.sender.username }}:</b> 
                     {{ message.message }}
                 
+                <v-btn icon @click="deleteMsg(message.id,index)" class="trash">
+                    <v-icon color="red">mdi-delete </v-icon>
+                </v-btn>
+
                 <div class="button1">
                     <v-btn @click.prevent="showReplyTrue(); setSender(message.sender.id);"
                         color="success" rounded="lg" 
@@ -43,7 +47,7 @@
                             reply 
                     </v-btn>
                 </div>
-                
+
             </div>       
         </v-alert>
 
@@ -84,7 +88,16 @@ methods:{
 
     setSender(senderId){
         this.msgSender = senderId
-    }
+    },
+
+    deleteMsg(messageId,index){
+        axios
+            .delete('http://127.0.0.1:8000/api/v1/messages/'+ messageId + '/',
+                {headers: {'Authorization': 'Bearer ' + this.user.access_token}} 
+            )
+        this.messages.splice(index,1)
+    },
+
 },
 
 computed:{
@@ -106,13 +119,12 @@ computed:{
 mounted(){
     axios
         .get('http://127.0.0.1:8000/api/v1/messages/',
-            {headers: {'Authorization': 'Bearer ' + this.user.access_token}}  
+            { headers: {'Authorization': 'Bearer ' + this.user.access_token }}  
         )
         .then(response => (this.messages = response.data))
    },
 }
 </script>
-
 
 <style scoped>
 
@@ -123,10 +135,17 @@ h1{
 }
 .myAlert{
     margin-top: 20px;
-    margin-left: 440px;
+    margin-left: 380px;
 }
 .button1{
     float:right ;
+    margin-right: 1px;
+    margin-top: 6px;
+}
+.trash{
+    float: right;
+    
+    margin-bottom:0 ;
 }
 .sender{
     font-size: 19px;
