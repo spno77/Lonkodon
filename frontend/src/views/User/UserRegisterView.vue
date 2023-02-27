@@ -6,7 +6,7 @@
             
             <v-row no-gutters >
                 <v-col class="ma-2 pa-1">
-                     <v-text-field color="cyan"
+                    <v-text-field color="cyan"
                     v-model="user.username"
                     label="Username"
                     ></v-text-field>
@@ -163,10 +163,10 @@ import axios from 'axios';
 
  </script>
  
- <style scoped>
+<style scoped>
  
- h1{
-     color: rgb(42, 137, 137); 
-    }
+h1{
+    color: rgb(42, 137, 137); 
+}
  
- </style>
+</style>

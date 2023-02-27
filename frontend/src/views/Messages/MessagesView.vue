@@ -1,7 +1,12 @@
 <template>
+
     <h1>My messages</h1>
+
+    <div v-show="showReply" class="message">
+        <MessageReplyView> </MessageReplyView>
+    </div>
     
-    <v-container>
+    <v-container class="cont">
       <v-row justify="center">
         <v-col cols="8">
           <v-container class="max-width">
@@ -37,21 +42,27 @@
            
         </v-alert>
     </div>
-
- </template>
+    
+</template>
 
 <script>
 import axios from 'axios';
 import { mapState, mapStores } from 'pinia';
 import { useAppStore } from '@/store/app';
+import MessageReplyView from '@/views/Messages/MessageReplyView'
 
 export default{
+
+components: {   
+    MessageReplyView
+},
 
 data() {
     return{
         messages:   [],
         pageSize:    5,
         pageNo:      1,
+        showReply: false,
     }
 },
 
@@ -89,22 +100,27 @@ h1{
     text-align: center;
     margin-top: 40px;
 }
-
 .myAlert{
     margin-top: 20px;
     margin-left: 440px;
 }
-
 .button1{
     float:right ;
 }
-
 .sender{
     font-size: 19px;
 }
-
-.avatar1 {
+.avatar1{
     margin-right: 8px;
+}
+.cont{
+    margin-top: -20px;
+}
+.message{
+  margin-left: 100px;
+  margin-top: 125px;
+  position: absolute;
+  right: 25px;
 }
 
 </style>
