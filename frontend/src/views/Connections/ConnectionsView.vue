@@ -16,11 +16,9 @@
       </v-row>
     </v-container>
 
-    <div v-for="(connection, index) in connections" :key="index">
-
     <v-container>
-        <v-row justify="center">
-            <v-col mt-2 cols="6">
+        <v-row>        
+            <v-col mt-2 cols="6" v-for="(connection, index) in connections" :key="index">
                 <v-card 
                     color="cyan"
                     height="100%"
@@ -33,15 +31,15 @@
                     <v-img class="myImage" :height="140" :src="connection.source.image"></v-img>
 
                     <v-col>
-                    <div class="connInfo">
-                        <div>  
-                            {{ connection.source.firstname  }} 
-                            {{ connection.source.lastname   }} 
-                        </div>
+                        <div class="connInfo">
+                            <div>  
+                                {{ connection.source.firstname  }} 
+                                {{ connection.source.lastname   }} 
+                            </div>
                
-                        <div> {{ connection.source.employment }} </div>
+                            <div> {{ connection.source.employment }} </div>
                     
-                    </div>
+                        </div>
                    </v-col>
 
                     <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
@@ -52,9 +50,6 @@
             </v-col>
         </v-row>
     </v-container>
-
-    </div>
- 
 </template>
 
 <script>
@@ -114,6 +109,9 @@ h1{
     font-size: 25px;
     position: absolute;
     margin-top: -110px;
+}
+.cont{
+    margin-top: -20px;
 }
 
 </style>
