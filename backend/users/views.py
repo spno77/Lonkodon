@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from .models import User,Message,Connection
 from .serializers import UserSerializer,MessageSerializer,ConnectionSerializer
 
-# User serializer
+# User views
 class UserList(generics.ListCreateAPIView):
 	
 	queryset = get_user_model().objects.all()
@@ -20,7 +20,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = UserSerializer
 
 
-# Message serializer
+# Message views
 class MessageList(generics.ListCreateAPIView):
 
 	serializer_class = MessageSerializer
@@ -38,9 +38,9 @@ class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = MessageSerializer
 
 
-# Connection serializer
+# Connection views
 class ConnectionList(generics.ListCreateAPIView):
-	
+
 	serializer_class = ConnectionSerializer
 
 	def perform_create(self, serializer):
@@ -50,6 +50,18 @@ class ConnectionList(generics.ListCreateAPIView):
 		target  = self.request.user
 		return Connection.objects.filter(target=target).filter(is_approved=True)	
 	
+class ConnectionRequestList(generics.ListCreateAPIView):
+
+	serializer_class = ConnectionSerializer
+
+	def perform_create(self, serializer):
+		serializer.save(source = self.request.user)
+
+	def get_queryset(self):
+		target  = self.request.user
+		return Connection.objects.filter(target=target).filter(is_approved=False)	
+
+
 class ConnectionDetail(generics.RetrieveUpdateDestroyAPIView):
 
 	queryset = Connection.objects.all()

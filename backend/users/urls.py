@@ -14,5 +14,7 @@ urlpatterns = [
 	
 	# Connection paths
 	path('connections/',views.ConnectionList.as_view()),
+	path('conn_requests/',views.ConnectionRequestList.as_view()),
 	path('connections/<int:pk>/',views.ConnectionDetail.as_view()),
+	
 ]
