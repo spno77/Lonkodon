@@ -42,9 +42,11 @@
                         </div>
                    </v-col>
 
-                    <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                    <router-link :to="{name: 'Profile',params: {id: connection.source.id}}">
+                        <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
                             Profile
                     </v-btn>
+                    </router-link>
           
                 </v-card>
             </v-col>
