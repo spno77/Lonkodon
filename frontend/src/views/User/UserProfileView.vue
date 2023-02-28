@@ -12,7 +12,7 @@
        
                 <v-col>
                     <h2 class="ma-3">Phone:     <b class="ma-3"> {{ user.phone      }} </b>  </h2>  
-                    <h2 class="ma-3">Employment:<b class="ma-3"> {{ user.employmen  }} </b>  </h2>
+                    <h2 class="ma-3">Employment:<b class="ma-3"> {{ user.employment  }} </b>  </h2>
                     <h2 class="ma-3">Position:  <b class="ma-3"> {{ user.position   }} </b>  </h2>
                 </v-col>
             </v-row>

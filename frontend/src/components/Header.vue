@@ -1,7 +1,9 @@
 <template>
   <v-toolbar density="compact" color="cyan">      
     
-    <v-toolbar-title>Lonkodon</v-toolbar-title>
+    <v-toolbar-title style="cursor: pointer" @click="$router.push('/')">
+       Lonkodon 
+    </v-toolbar-title>
 
     <v-btn icon :to="{name: 'Messages'}">
       <v-icon >mdi-message </v-icon>
