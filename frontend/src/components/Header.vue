@@ -7,7 +7,7 @@
       <v-icon >mdi-message </v-icon>
     </v-btn>
     
-    <v-btn to="/connections">  Connections   </v-btn>
+    <v-btn to="/connections">  Network   </v-btn>
     <v-btn>  Articles   </v-btn>
 
     <v-btn icon>

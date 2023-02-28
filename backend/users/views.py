@@ -41,9 +41,15 @@ class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
 # Connection serializer
 class ConnectionList(generics.ListCreateAPIView):
 	
-	queryset = Connection.objects.all()
 	serializer_class = ConnectionSerializer
 
+	def perform_create(self, serializer):
+		serializer.save(source = self.request.user)
+
+	def get_queryset(self):
+		target  = self.request.user
+		return Connection.objects.filter(target=target).filter(is_approved=True)	
+	
 class ConnectionDetail(generics.RetrieveUpdateDestroyAPIView):
 
 	queryset = Connection.objects.all()

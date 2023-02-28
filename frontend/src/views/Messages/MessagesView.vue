@@ -1,6 +1,6 @@
 <template>
 
-    <h1>My messages</h1>
+    <h1>My Messages</h1>
 
     <div v-show="showReply" class="message">
         <MessageReplyView :receiver="msgSender"> </MessageReplyView>

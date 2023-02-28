@@ -49,6 +49,8 @@ class MessageSerializer(serializers.ModelSerializer):
 
 class ConnectionSerializer(serializers.ModelSerializer):
 
+	source = UserSerializer(read_only=True)
+
 	class Meta:
 		model = Connection
 		fields = ['id','source','target','is_approved','send_date']
