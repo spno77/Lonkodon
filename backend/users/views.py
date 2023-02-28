@@ -50,6 +50,7 @@ class ConnectionList(generics.ListCreateAPIView):
 		target  = self.request.user
 		return Connection.objects.filter(target=target).filter(is_approved=True)	
 	
+	
 class ConnectionRequestList(generics.ListCreateAPIView):
 
 	serializer_class = ConnectionSerializer
