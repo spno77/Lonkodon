@@ -36,6 +36,10 @@
                 <b>{{ message.sender.username }}:</b> 
                     {{ message.message }}
                 
+                <div class="date">
+                   {{ message.send_date }}
+                </div>
+
                 <v-btn icon @click="deleteMsg(message.id,index)" class="trash">
                     <v-icon color="red">mdi-delete </v-icon>
                 </v-btn>
@@ -48,7 +52,7 @@
                     </v-btn>
                 </div>
 
-            </div>       
+            </div>  
         </v-alert>
 
     </div>
@@ -144,8 +148,6 @@ h1{
 }
 .trash{
     float: right;
-    
-    margin-bottom:0 ;
 }
 .sender{
     font-size: 19px;
@@ -157,10 +159,16 @@ h1{
     margin-top: -20px;
 }
 .message{
-  margin-left: 100px;
-  margin-top: 125px;
-  position: absolute;
-  right: 25px;
+    margin-left: 100px;
+    margin-top: 125px;
+    position: absolute;
+    right: 25px;
+}
+
+.date{
+    font-size: 12px;
+    position: absolute;
+    left: 44%;
 }
 
 </style>
