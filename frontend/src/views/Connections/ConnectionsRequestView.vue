@@ -1,3 +1,4 @@
+
 <template>
     <h1> My Requests </h1>
    
@@ -32,7 +33,7 @@
                     <v-col>
                         <div class="connInfo">
                             <div>  
-                                {{ connection.source.firstname  }} 
+                                {{ connection.target  }} 
                                 {{ connection.source.lastname   }} 
                             </div>
                
@@ -42,7 +43,7 @@
                    </v-col>
 
                         <v-row justify="center" class="mb-2">
-                            <v-btn color="success" @click="acceptRequest(connection.source.id,connection.id,index)">
+                            <v-btn color="success" @click="acceptRequest(connection.target,connection.id,index)">
                                 Accept
                             </v-btn>
                             <v-btn color="red" @click="declineRequest(connection.id,index)" class="ml-6">
@@ -60,7 +61,6 @@
 import axios from 'axios';
 import { mapState, mapStores } from 'pinia';
 import { useAppStore } from '@/store/app';
-
 export default{
   
 data() {
@@ -70,7 +70,6 @@ data() {
         pageNo:      1,
     }
 },
-
 methods:{
     acceptRequest(sourceId,requestId,index){
         axios
@@ -83,7 +82,6 @@ methods:{
         this.connections.splice(index,1)
        
     },
-
     declineRequest(requestId,index){
         axios
             .delete('http://127.0.0.1:8000/api/v1/connections/'+ requestId + '/',
@@ -92,23 +90,18 @@ methods:{
         this.connections.splice(index,1)
     },
 },
-
 computed:{
     ...mapStores(useAppStore),
     ...mapState(useAppStore,['user']),
-
     numPages() {
         return Math.ceil(this.connections.length / this.pageSize);
     },
-
     pagedConnections() {      
         const startIndex = (this.pageNo - 1) * this.pageSize;
         const data = [...this.connections];
-
         return data.splice(startIndex, this.pageSize);
     }
 },
-
 mounted(){
     axios
         .get('http://127.0.0.1:8000/api/v1/conn_requests/',
@@ -117,11 +110,9 @@ mounted(){
         .then(response => (this.connections = response.data))
    },
 }
-
 </script>
 
 <style scoped>
-
 h1,h2{
     color: rgb(42, 137, 137);
     text-align: center;
@@ -139,5 +130,4 @@ h1,h2{
 .cont{
     margin-top: -20px;
 }
-
 </style>
