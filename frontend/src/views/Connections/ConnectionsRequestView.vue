@@ -1,27 +1,18 @@
 <template>
-
-  <h1> My Network </h1>
-  
-  <v-col class="ml-16">
-    <router-link :to="{name: 'Requests'}">
-        <v-btn color="indigo-darken-2"  class="ml-16"> 
-            Requests
-        </v-btn>
-    </router-link>
-  </v-col>
-  
-  <v-container class="cont" >
-      <v-row justify="center">
-        <v-col cols="8">
-          <v-container class="max-width">
-            <v-pagination
-              v-model="pageNo"
-              class="my-4"
-              :length="numPages"
-            ></v-pagination>
-          </v-container>
-        </v-col>
-      </v-row>
+    <h1> My Requests </h1>
+   
+    <v-container class="cont" >
+        <v-row justify="center">
+            <v-col cols="8">
+                <v-container class="max-width">
+                    <v-pagination
+                        v-model="pageNo"
+                        class="my-4"
+                        :length="numPages"
+                    ></v-pagination>
+                </v-container>
+            </v-col>
+        </v-row>
     </v-container>
 
     <v-container>
@@ -50,17 +41,20 @@
                         </div>
                    </v-col>
 
-                    <router-link :to="{name: 'Profile',params: {id: connection.source.id}}">
-                        <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
-                            Profile
-                        </v-btn>
-                    </router-link>
-          
+                        <v-row justify="center" class="mb-2">
+                            <v-btn color="success">
+                                Accept
+                            </v-btn>
+                            <v-btn color="red" class="ml-6">
+                                Decline
+                            </v-btn>
+                        </v-row>
                 </v-card>
             </v-col>
         </v-row>
     </v-container>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -74,6 +68,16 @@ data() {
         connections: [],
         pageSize:    4,
         pageNo:      1,
+    }
+},
+
+methods:{
+    acceptRequest(){
+        //TODO
+    },
+
+    declineRequest(){
+        //TODO
     }
 },
 
@@ -95,7 +99,7 @@ computed:{
 
 mounted(){
     axios
-        .get('http://127.0.0.1:8000/api/v1/connections/',
+        .get('http://127.0.0.1:8000/api/v1/conn_requests/',
             { headers: {'Authorization': 'Bearer ' + this.user.access_token }}  
         )
         .then(response => (this.connections = response.data))
@@ -106,7 +110,7 @@ mounted(){
 
 <style scoped>
 
-h1{
+h1,h2{
     color: rgb(42, 137, 137);
     text-align: center;
     margin-top: 40px;

@@ -12,6 +12,7 @@ import MessageReplyView from '../views/Messages/MessageReplyView'
 
 // connctions routes
 import ConnectionsView from '../views/Connections/ConnectionsView'
+import ConnectionsRequestView from '../views/Connections/ConnectionsRequestView'
 
 const routes = [
   {
@@ -60,6 +61,12 @@ const routes = [
         path: '/connections/',
         name: 'Connections',
         component: ConnectionsView,
+        props: true
+      },
+      {
+        path: '/requests/',
+        name: 'Requests',
+        component: ConnectionsRequestView,
         props: true
       },
     ],
