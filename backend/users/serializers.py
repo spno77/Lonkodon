@@ -49,7 +49,7 @@ class MessageSerializer(serializers.ModelSerializer):
 
 class ConnectionSerializer(serializers.ModelSerializer):
 
-	source = UserSerializer(read_only=True)
+	source       = UserSerializer(read_only=True)
 
 	class Meta:
 		model = Connection
