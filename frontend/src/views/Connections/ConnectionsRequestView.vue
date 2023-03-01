@@ -42,10 +42,10 @@
                    </v-col>
 
                         <v-row justify="center" class="mb-2">
-                            <v-btn color="success">
+                            <v-btn color="success" @click="acceptRequest(connection.source.id,connection.id,index)">
                                 Accept
                             </v-btn>
-                            <v-btn color="red" class="ml-6">
+                            <v-btn color="red" @click="declineRequest(connection.id,index)" class="ml-6">
                                 Decline
                             </v-btn>
                         </v-row>
@@ -72,13 +72,25 @@ data() {
 },
 
 methods:{
-    acceptRequest(){
-        //TODO
+    acceptRequest(sourceId,requestId,index){
+        axios
+            .put('http://127.0.0.1:8000/api/v1/connections/'+ requestId + '/',{
+                target: sourceId ,
+                is_approved: "true" ,
+            },
+                {headers: {'Authorization': 'JWT ' + this.user.access_token}} 
+            )
+        this.connections.splice(index,1)
+       
     },
 
-    declineRequest(){
-        //TODO
-    }
+    declineRequest(requestId,index){
+        axios
+            .delete('http://127.0.0.1:8000/api/v1/connections/'+ requestId + '/',
+                {headers: {'Authorization': 'Bearer ' + this.user.access_token}} 
+            )
+        this.connections.splice(index,1)
+    },
 },
 
 computed:{
