@@ -33,7 +33,7 @@
                     <v-col>
                         <div class="connInfo">
                             <div>  
-                                {{ connection.target  }} 
+                                {{ connection.source.firstname  }} 
                                 {{ connection.source.lastname   }} 
                             </div>
                
