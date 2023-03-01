@@ -26,7 +26,7 @@
 
     <v-container>
         <v-row>        
-            <v-col mt-2 cols="6" v-for="(connection, index) in connections" :key="index">
+            <v-col mt-2 cols="6" v-for="(connection, index) in pagedConnections" :key="index">
                 <v-card 
                     color="cyan"
                     height="100%"
@@ -120,7 +120,7 @@ h1{
     position: absolute;
     margin-top: -110px;
 }
-.cont{
+tree/main/backend.cont{
     margin-top: -20px;
 }
 

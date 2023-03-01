@@ -17,7 +17,7 @@
 
     <v-container>
         <v-row>        
-            <v-col mt-2 cols="6" v-for="(connection, index) in connections" :key="index">
+            <v-col mt-2 cols="6" v-for="(connection, index) in pagedConnections" :key="index">
                 <v-card 
                     color="cyan"
                     height="100%"
