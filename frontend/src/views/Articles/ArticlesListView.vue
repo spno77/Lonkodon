@@ -25,9 +25,9 @@
                         {{ article.title }}
                     </v-card-title>
 
-                <v-card-subtitle class="text-md-center mt-1">
-                  <b> By:  {{ article.author.username }} </b>
-                </v-card-subtitle>
+                    <v-card-subtitle class="text-md-center mt-1">
+                        <b> By:  {{ article.author.username }} </b>
+                    </v-card-subtitle>
 
                     <v-col class="mb-2"> {{ article.date_created }} </v-col>
 
