@@ -10,7 +10,8 @@
     </v-btn>
     
     <v-btn to="/connections">  Network   </v-btn>
-    <v-btn>  Articles   </v-btn>
+    
+    <v-btn to="/articles">  Articles   </v-btn>
 
     <v-btn icon>
       <v-icon> mdi-dots-vertical </v-icon>

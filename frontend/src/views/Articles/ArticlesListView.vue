@@ -25,11 +25,18 @@
                         {{ article.title }}
                     </v-card-title>
 
+                <v-card-subtitle class="text-md-center mt-1">
+                  <b> By:  {{ article.author.username }} </b>
+                </v-card-subtitle>
+
                     <v-col class="mb-2"> {{ article.date_created }} </v-col>
 
-                    <v-btn color="purple" class="mb-1" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
-                        Read 
-                    </v-btn>
+                    <router-link :to="{name: 'Article',params: {id: article.id}}">
+                        <v-btn color="purple" class="mb-1" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                            Read 
+                        </v-btn>
+                    </router-link>
+
                 </v-card>
             </v-col>
         </v-row>
