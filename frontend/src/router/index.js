@@ -10,9 +10,14 @@ import UserProfileView  from '../views/User/UserProfileView'
 import MessagesView     from '../views/Messages/MessagesView'
 import MessageReplyView from '../views/Messages/MessageReplyView'
 
-// connctions routes
-import ConnectionsView from '../views/Connections/ConnectionsView'
+// connections routes
+import ConnectionsView        from '../views/Connections/ConnectionsView'
 import ConnectionsRequestView from '../views/Connections/ConnectionsRequestView'
+
+// articles routes
+import ArticlesListView from '../views/Articles/ArticlesListView'
+import ArticleView  from '../views/Articles/ArticleView'
+
 
 const routes = [
   {
@@ -67,6 +72,18 @@ const routes = [
         path: '/requests/',
         name: 'Requests',
         component: ConnectionsRequestView,
+        props: true
+      },
+      {
+        path: '/articles/',
+        name: 'Articles',
+        component: ArticlesListView,
+        props: true
+      },
+      {
+        path: '/articles/:id',
+        name: 'Article',
+        component: ArticleView,
         props: true
       },
     ],

@@ -120,7 +120,7 @@ h1{
     position: absolute;
     margin-top: -110px;
 }
-tree/main/backend.cont{
+.cont{
     margin-top: -20px;
 }
 
