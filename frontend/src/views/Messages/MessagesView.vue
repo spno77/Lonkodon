@@ -22,7 +22,7 @@
 
     <div v-for="(message, index) in pagedMessages" :key="index">
 
-        <v-alert class="myAlert" color="cyan" 
+        <v-alert class="myAlert myCard" color="cyan" 
             width="700"
             border="start"
         >
@@ -164,11 +164,14 @@ h1{
     position: absolute;
     right: 25px;
 }
-
 .date{
     font-size: 12px;
     position: absolute;
     left: 44%;
+}
+.myCard {
+   
+    border-radius: 12px 0 12px 0;
 }
 
 </style>

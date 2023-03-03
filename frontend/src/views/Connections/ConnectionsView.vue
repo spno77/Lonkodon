@@ -1,8 +1,8 @@
 <template>
 
-  <h1> My Network </h1>
+  <h1 class="mt-5"> My Network </h1>
   
-  <v-col class="ml-16">
+  <v-col class="ml-16 mt-2">
     <router-link :to="{name: 'Requests'}">
         <v-btn color="indigo-darken-2"  class="ml-16"> 
             Requests
@@ -10,7 +10,7 @@
     </router-link>
   </v-col>
   
-  <v-container class="cont" >
+  <v-container class="mt-n10" >
       <v-row justify="center">
         <v-col cols="8">
           <v-container class="max-width">
@@ -30,6 +30,7 @@
                 <v-card 
                     color="cyan"
                     height="100%"
+                    class="myCard"
                 >
 
                     <v-card-title class="text-h4 text-md-center" >
@@ -109,7 +110,6 @@ mounted(){
 h1{
     color: rgb(42, 137, 137);
     text-align: center;
-    margin-top: 40px;
 }
 .myImage{
     margin-left: -35%;
@@ -120,8 +120,11 @@ h1{
     position: absolute;
     margin-top: -110px;
 }
-.cont{
-    margin-top: -20px;
+
+.myCard {
+    border-left: 6px solid rgb(138, 100, 173) !important;
+    border-right: 6px solid rgb(138, 100, 173) !important;
+    border-radius: 25px 0 25px 0;
 }
 
 </style>

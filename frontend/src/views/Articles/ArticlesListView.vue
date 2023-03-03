@@ -1,6 +1,6 @@
 <template>
 
-    <h1>Top Articles</h1>
+    <h1 class="mt-5">Top Articles</h1>
 
     <v-container class="cont" >
         <v-row justify="center">
@@ -100,15 +100,11 @@ mounted(){
 h1,h2{
     color: rgb(42, 137, 137);
     text-align: center;
-    margin-top: 40px;
+  
 }
 .card1 {
     border-left: 6px solid rgb(138, 100, 173) !important;
     border-radius: 25px 0 0 0;
-}
-
-.cont{
-    margin-top: -20px;
 }
 
 </style>

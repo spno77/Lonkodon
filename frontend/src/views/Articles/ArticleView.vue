@@ -10,9 +10,7 @@
                 <v-card-text class="text-center mt-4">
                     {{ article.content }}
                 </v-card-text>
-                    
-              
-                  
+                                    
                 </v-card>
             </v-col>
         </v-row>
