@@ -17,7 +17,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
 
 	author   = UserSerializer(read_only=True)
-	comments = CommentSerializer(many=True,read_only=True)
+	comments = CommentSerializer(read_only=True,many=True)
 
 	class Meta:
 		model = Article

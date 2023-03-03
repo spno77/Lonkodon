@@ -24,13 +24,14 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
 
 # Comment views
 class CommentList(generics.ListCreateAPIView):
-    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
 
     def perform_create(self,serializer):
         pk = self.request.data['article']
         article = Article.objects.get(pk=pk)
         serializer.save(author=self.request.user,article=article)
+
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()

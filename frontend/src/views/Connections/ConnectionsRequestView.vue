@@ -22,6 +22,7 @@
                 <v-card 
                     color="cyan"
                     height="100%"
+                    class="myCard"
                 >
 
                     <v-card-title class="text-h4 text-md-center" >
@@ -127,7 +128,9 @@ h1,h2{
     position: absolute;
     margin-top: -110px;
 }
-.cont{
-    margin-top: -20px;
+.myCard {
+    border-left: 6px solid rgb(138, 100, 173) !important;
+    border-right: 6px solid rgb(138, 100, 173) !important;
+    border-radius: 25px 0 25px 0;
 }
 </style>
