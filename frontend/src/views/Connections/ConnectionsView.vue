@@ -2,7 +2,6 @@
 
     <h1 class="mt-5"> My Network </h1>
     
-
     <v-col class="ml-16 mt-2">
       <router-link :to="{name: 'Requests'}">
           <v-btn color="indigo-darken-2"  class="ml-16"> 
@@ -19,58 +18,58 @@
       </router-link>
     </v-col>
     
-    
     <v-container class="mt-n10" >
         <v-row justify="center">
-          <v-col cols="8">
-            <v-container class="max-width">
-              <v-pagination
-                v-model="pageNo"
-                class="my-4"
-                :length="numPages"
-              ></v-pagination>
-            </v-container>
-          </v-col>
+            <v-col cols="8">
+                <v-container class="max-width">
+                    <v-pagination
+                        v-model="pageNo"
+                        class="my-4"
+                        :length="numPages"
+                    ></v-pagination>
+                </v-container>
+            </v-col>
         </v-row>
-      </v-container>
+    </v-container>
   
-      <v-container>
-          <v-row>        
-              <v-col mt-2 cols="6" v-for="(connection, index) in pagedConnections" :key="index">
-                  <v-card 
-                      color="cyan"
-                      height="100%"
-                      class="myCard"
-                  >
+    <v-container>
+        <v-row>        
+            <v-col mt-2 cols="6" v-for="(connection, index) in pagedConnections" :key="index">
+                <v-card 
+                    color="cyan"
+                    height="100%"
+                    class="myCard"
+                >
   
-                      <v-card-title class="text-h4 text-md-center" >
-                          {{ connection.source.username }}
-                      </v-card-title>
+                    <v-card-title class="text-h4 text-md-center" >
+                        {{ connection.source.username }}
+                    </v-card-title>
   
-                      <v-img class="myImage" :height="140" :src="connection.source.image"></v-img>
+                    <v-img class="myImage" :height="140" :src="connection.source.image"></v-img>
   
-                      <v-col>
-                          <div class="connInfo">
-                              <div>  
-                                  {{ connection.source.firstname  }} 
-                                  {{ connection.source.lastname   }} 
-                              </div>
+                    <v-col>
+                        <div class="connInfo">
+                            <div>  
+                                {{ connection.source.firstname  }} 
+                                {{ connection.source.lastname   }} 
+                            </div>
                  
-                              <div> {{ connection.source.employment }} </div>
+                            <div> {{ connection.source.employment }} </div>
                       
-                          </div>
-                     </v-col>
+                        </div>
+                    </v-col>
   
-                      <router-link :to="{name: 'Profile',params: {id: connection.source.id}}">
-                          <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
-                              Profile
-                          </v-btn>
-                      </router-link>
+                    <router-link :to="{name: 'Profile',params: {id: connection.source.id}}">
+                        <v-btn color="success" theme="dark" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                            Profile
+                        </v-btn>
+                    </router-link>
             
-                  </v-card>
-              </v-col>
-          </v-row>
-      </v-container>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
+    
   </template>
   
   <script>

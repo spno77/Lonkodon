@@ -31,14 +31,13 @@
                     <v-img class="myImage" :height="140" :src="user.image"></v-img>
 
                     <v-col>
-                        <div class="connInfo">
+                        <div class="userInfo">
                             <div>  
                                 {{ user.firstname  }} 
                                 {{ user.lastname   }} 
                             </div>
                
                             <div> {{ user.employment }} </div>
-                    
                         </div>
                    </v-col>
                    
@@ -46,7 +45,6 @@
                         Connect
                     </v-btn>
 
-                        
                 </v-card>
             </v-col>
         </v-row>
@@ -113,7 +111,7 @@ h1,h2{
 .myImage{
     margin-left: -35%;
 }
-.connInfo{
+.userInfo{
     margin-left: 320px;
     font-size: 25px;
     position: absolute;
