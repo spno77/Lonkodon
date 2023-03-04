@@ -12,8 +12,9 @@ class UserSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = get_user_model()
+	
 		fields = ['id','username','email','firstname','lastname',
-		'is_staff','phone','image','employment','position']
+		'is_staff','phone','image','employment','position',]
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -54,3 +55,4 @@ class ConnectionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Connection
 		fields = ['id','source','target','is_approved','send_date']
+

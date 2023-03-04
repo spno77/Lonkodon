@@ -24,8 +24,9 @@
         <h1 class="mt-n10"> Comments </h1>
     </v-row>
 
-     <v-row v-for="comment in article.comments" justify="center" class="mt-n8">
-        <v-col cols="8" > 
+     <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n8">
+        <v-col cols="8" >
+
             <v-card height="60" color="lime-lighten-4" class="mb-5 commentCard ">        
              {{ comment.author.username }} : 
                 

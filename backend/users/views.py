@@ -39,6 +39,21 @@ class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Connection views
+class ConnectionFindList(generics.ListCreateAPIView):
+
+	serializer_class = UserSerializer
+
+	def get_queryset(self):
+		target  = self.request.user
+
+		connections = Connection.objects.filter(
+			target=target).filter(
+			is_approved=True)
+	
+		return User.objects.exclude(source__in=connections)
+		
+	
+
 class ConnectionList(generics.ListCreateAPIView):
 
 	serializer_class = ConnectionSerializer
@@ -48,8 +63,12 @@ class ConnectionList(generics.ListCreateAPIView):
 
 	def get_queryset(self):
 		target  = self.request.user
-		return Connection.objects.filter(target=target).filter(is_approved=True)	
-	
+		connections = Connection.objects.filter(
+			target=target).filter(
+			is_approved=True).exclude(
+			source=target)
+
+		return connections
 	
 class ConnectionRequestList(generics.ListCreateAPIView):
 

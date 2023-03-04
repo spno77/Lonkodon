@@ -13,11 +13,11 @@ import MessageReplyView from '../views/Messages/MessageReplyView'
 // connections routes
 import ConnectionsView        from '../views/Connections/ConnectionsView'
 import ConnectionsRequestView from '../views/Connections/ConnectionsRequestView'
+import FindConnectionsView    from '../views/Connections/FindConnectionsView'
 
 // articles routes
 import ArticlesListView from '../views/Articles/ArticlesListView'
 import ArticleView  from '../views/Articles/ArticleView'
-
 
 const routes = [
   {
@@ -72,6 +72,12 @@ const routes = [
         path: '/requests/',
         name: 'Requests',
         component: ConnectionsRequestView,
+        props: true
+      },
+      {
+        path: '/connections/find',
+        name: 'FindConnections',
+        component: FindConnectionsView,
         props: true
       },
       {
