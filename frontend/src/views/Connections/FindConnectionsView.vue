@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mt-5"> My Requests </h1>
+    <h1 class="mt-5"> Recommended Users </h1>
    
     <v-container class="cont" >
         <v-row justify="center">
@@ -17,7 +17,7 @@
 
     <v-container>
         <v-row>        
-            <v-col mt-2 cols="6" v-for="(connection, index) in pagedConnections" :key="index">
+            <v-col mt-2 cols="6" v-for="(user, index) in pagedUsers" :key="index">
                 <v-card 
                     color="cyan"
                     height="100%"
@@ -25,31 +25,28 @@
                 >
 
                     <v-card-title class="text-h4 text-md-center" >
-                        {{ connection.source.username }}
+                        {{ user.username }}
                     </v-card-title>
 
-                    <v-img class="myImage" :height="140" :src="connection.source.image"></v-img>
+                    <v-img class="myImage" :height="140" :src="user.image"></v-img>
 
                     <v-col>
                         <div class="connInfo">
                             <div>  
-                                {{ connection.source.firstname  }} 
-                                {{ connection.source.lastname   }} 
+                                {{ user.firstname  }} 
+                                {{ user.lastname   }} 
                             </div>
                
-                            <div> {{ connection.source.employment }} </div>
+                            <div> {{ user.employment }} </div>
                     
                         </div>
                    </v-col>
+                   
+                   <v-btn color="purple-darken-4" @click="connect(user.id,index)" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                        Connect
+                    </v-btn>
 
-                        <v-row justify="center" class="mb-2">
-                            <v-btn color="success" @click="acceptRequest(connection.target,connection.id,index)">
-                                Accept
-                            </v-btn>
-                            <v-btn color="red" @click="declineRequest(connection.id,index)" class="ml-6">
-                                Decline
-                            </v-btn>
-                        </v-row>
+                        
                 </v-card>
             </v-col>
         </v-row>
@@ -65,49 +62,44 @@ export default{
   
 data() {
     return{ 
-        connections: [],
+        users:       [],
         pageSize:    4,
         pageNo:      1,
     }
 },
 methods:{
-    acceptRequest(sourceId,requestId,index){
-        axios
-            .put('http://127.0.0.1:8000/api/v1/connections/'+ requestId + '/',{
-                target: sourceId ,
-                is_approved: "true" ,
+    connect(userId,index){
+        axios.
+            post('http://127.0.0.1:8000/api/v1/connections/',{
+                source: this.user.id,
+                target: userId,
+                is_approved: "false" 
             },
-                {headers: {'Authorization': 'JWT ' + this.user.access_token}} 
+                { headers: {'Authorization': 'Bearer ' + this.user.access_token }}  
             )
-        this.connections.splice(index,1)
-       
-    },
-    declineRequest(requestId,index){
-        axios
-            .delete('http://127.0.0.1:8000/api/v1/connections/'+ requestId + '/',
-                {headers: {'Authorization': 'Bearer ' + this.user.access_token}} 
-            )
-        this.connections.splice(index,1)
-    },
+            this.users.splice(index,1)
+    }
+    
 },
 computed:{
     ...mapStores(useAppStore),
     ...mapState(useAppStore,['user']),
+
     numPages() {
-        return Math.ceil(this.connections.length / this.pageSize);
+        return Math.ceil(this.users.length / this.pageSize);
     },
-    pagedConnections() {      
+    pagedUsers() {      
         const startIndex = (this.pageNo - 1) * this.pageSize;
-        const data = [...this.connections];
+        const data = [...this.users];
         return data.splice(startIndex, this.pageSize);
     }
 },
 mounted(){
     axios
-        .get('http://127.0.0.1:8000/api/v1/conn_requests/',
+        .get('http://127.0.0.1:8000/api/v1/connections/find/',
             { headers: {'Authorization': 'Bearer ' + this.user.access_token }}  
         )
-        .then(response => (this.connections = response.data))
+        .then(response => (this.users = response.data))
    },
 }
 </script>
