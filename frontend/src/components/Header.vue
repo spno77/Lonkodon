@@ -9,6 +9,8 @@
       <v-icon >mdi-message </v-icon>
     </v-btn>
     
+    <v-btn to="/jobs">  Jobs   </v-btn>
+
     <v-btn to="/connections">  Network   </v-btn>
     
     <v-btn to="/articles">  Articles   </v-btn>

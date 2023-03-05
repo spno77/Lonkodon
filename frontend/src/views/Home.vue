@@ -7,7 +7,7 @@
 
     <v-row justify="center" class="mt-6">
         <h2> 
-            Connect,Find and Post Jobs,Read Articles ...
+            Connect, Apply and Post Jobs, Message, Read Articles ...
         </h2>
     </v-row>
 </template>
