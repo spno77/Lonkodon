@@ -1,6 +1,14 @@
 <template>
 
     <h1 class="mt-5"> Jobs </h1>
+
+    <v-col class="ml-16 mt-2">
+      <router-link :to="{name: 'JobPostView'}">
+          <v-btn color="indigo-darken-2"  class="ml-16"> 
+             Post Job
+          </v-btn>
+      </router-link>
+    </v-col>
     
     <v-container class="mt-n10" >
         <v-row justify="center">
