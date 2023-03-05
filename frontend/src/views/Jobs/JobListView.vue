@@ -57,10 +57,14 @@
                             <div> Job Poster: <b> 
                                 <span style="margin-left: 18px">{{ job.poster.username }}
                                 </span> </b>  
+                            </div>
+                            
+                            <div> Date: <b> 
+                                <span style="margin-left: 65px">{{ job.date_created }}
+                                </span> </b>  
                             </div> 
                         </div>
                     </v-col>
-  
                     
                     <v-btn @click="apply(job.id,index)" color="success" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
                             apply
