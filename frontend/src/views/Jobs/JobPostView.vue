@@ -13,10 +13,11 @@
                 </v-col>
  
                 <v-col class="ma-2 pa-1">
-                    <v-text-field color="cyan"
+                    <v-select color="cyan"
                     v-model="job.level"
+                    :items="items"
                     label="Level"
-                    ></v-text-field>     
+                    ></v-select>     
                 </v-col>
             </v-row>
  
@@ -60,6 +61,12 @@ import { useAppStore } from '@/store/app';
                     experience:  '',
                     poster:      '',
                 },
+                items: [
+                    'entry',
+                    'junior',
+                    'mid',
+                    'senior',
+                ],
             }
         },
 

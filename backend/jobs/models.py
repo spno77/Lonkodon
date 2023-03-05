@@ -3,9 +3,21 @@ from django.contrib.auth import get_user_model
 
 class Job(models.Model):
 
+    ENTRY   = 'entry'
+    JUNIOR  = 'junior'
+    MID     = 'mid'
+    SENIOR  = 'senior'
+
+    LEVEL = [
+        (ENTRY,('entry')),
+        (JUNIOR,('junior')),
+        (MID,('mid')),
+        (SENIOR,('senior')),
+    ]
+
     title           = models.CharField(max_length=30)
     date_created    = models.DateField(auto_now=True)
-    level           = models.CharField(max_length=20)
+    level           = models.CharField(max_length=20,choices=LEVEL)
     description     = models.CharField(max_length=200)
     experience      = models.PositiveIntegerField()
 
