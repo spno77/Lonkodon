@@ -9,6 +9,7 @@ import UserProfileView  from '../views/User/UserProfileView'
 // messages routes
 import MessagesView     from '../views/Messages/MessagesView'
 import MessageReplyView from '../views/Messages/MessageReplyView'
+import MessageSendView  from '../views/Messages/MessageSendView'
 
 // connections routes
 import ConnectionsView        from '../views/Connections/ConnectionsView'
@@ -64,6 +65,12 @@ const routes = [
         path: '/reply/',
         name: 'MessageReply',
         component: MessageReplyView,
+        props: true
+      },
+      {
+        path: '/sendmessage/',
+        name: 'MessageSendView',
+        component: MessageSendView,
         props: true
       },
       {
