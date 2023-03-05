@@ -1,6 +1,14 @@
 <template>
 
     <h1 class="mt-5">Top Articles</h1>
+    
+    <v-col class="ml-16 mt-2">
+      <router-link :to="{name: 'ArticleCreateView'}">
+          <v-btn color="indigo-darken-2"  class="ml-16"> 
+            Create Article
+          </v-btn>
+      </router-link>
+    </v-col>
 
     <v-container class="cont" >
         <v-row justify="center">
@@ -15,8 +23,6 @@
             </v-col>
         </v-row>
     </v-container>
-
-    
 
     <div v-for="(article, index) in pagedArticles" :key="index">
 

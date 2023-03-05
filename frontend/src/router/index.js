@@ -17,8 +17,9 @@ import ConnectionsRequestView from '../views/Connections/ConnectionsRequestView'
 import FindConnectionsView    from '../views/Connections/FindConnectionsView'
 
 // articles routes
-import ArticlesListView from '../views/Articles/ArticlesListView'
-import ArticleView      from '../views/Articles/ArticleView'
+import ArticlesListView  from '../views/Articles/ArticlesListView'
+import ArticleView       from '../views/Articles/ArticleView'
+import ArticleCreateView from '../views/Articles/ArticleCreateView'
 
 // jobs routes 
 import JobListView from '../views/Jobs/JobListView'
@@ -101,6 +102,12 @@ const routes = [
         path: '/articles/:id',
         name: 'Article',
         component: ArticleView,
+        props: true
+      },
+      {
+        path: '/articles/create',
+        name: 'ArticleCreateView',
+        component: ArticleCreateView,
         props: true
       },
       {

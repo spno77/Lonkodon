@@ -78,7 +78,6 @@ import { useAppStore } from '@/store/app';
                 fd.append('level'       ,this.job.level)
                 fd.append('description' ,this.job.description)
                 fd.append('experience'  ,this.job.experience)
-                fd.append('poster'      ,this.job.user)
                 
                 axios
                     .post('http://127.0.0.1:8000/api/v1/jobs/',fd,
