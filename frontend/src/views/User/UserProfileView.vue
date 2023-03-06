@@ -32,14 +32,11 @@
 <script>
 import MessageSendView from '@/views/Messages/MessageSendView'
 import axios from 'axios';
-
 export default{
    name: 'Profile',
-
    components: {   
         MessageSendView
     },
-
    
    data(){
        return{
@@ -49,13 +46,10 @@ export default{
            msgSender:  0,
        }
    },
-
    methods:{
-
         showReplyTrue(){
             this.showReply = true   
         },
-
         showReplyFalse(){
             this.showReply = false
         },
@@ -64,15 +58,12 @@ export default{
             this.msgSender = senderId
         },
    },
-
-
    mounted(){
         axios
             .get(`http://127.0.0.1:8000/api/v1/users/${ this.id }/`)
             .then(response => (this.user = response.data))
     }
 }
-
 </script>
 
 <style scoped>
@@ -80,25 +71,21 @@ export default{
 h2,p{
     color: rgb(40, 151, 151);
 }
-
 h1{
     color: rgb(42, 137, 137);
     text-align: center;
     margin-top: 40px;
 }
-
 b{
     color: rgb(34, 118, 118);
 }
 .card{
     margin-top: 40px;
 }
-
 .message{
     margin-left: 100px;
     margin-top: 140px;
     position: absolute;
     right: 10px;
 }
-
 </style>
