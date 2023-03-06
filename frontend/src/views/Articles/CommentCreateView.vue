@@ -1,24 +1,15 @@
 <template>
-    <h1 class="text-md-center mt-10"> Create Article </h1>
+    <h1 class="text-md-center mt-10"> New Comment </h1>
    
     <v-container class="mt-3" >
         <v-form>
             
             <v-row justify="center">
-                <v-col cols="5" class="ma-2 pa-1">
-                    <v-text-field color="cyan"
-                    v-model="article.title"
-                    label="Tile"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
- 
-            <v-row no-gutters >
-                <v-col class="ma-2 pa-1">
+                <v-col cols="8" class="ma-2 pa-1">
                     <v-text-field color="cyan"
                     class="content"
-                    v-model="article.content"
-                    label="Write article"
+                    v-model="comment.comment"
+                    label="Tile"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -27,7 +18,7 @@
  
         <v-btn class="mt-n16" @click.prevent="onSubmit" color="cyan" rounded="lg"
             :style="{left: '50%', transform:'translateX(-50%)'}"> 
-                        Create
+                    Comment
        </v-btn>
         
     </v-container>
@@ -43,10 +34,8 @@ export default {
     
 data(){
     return {
-        article:{
-            title:   '',
-            content: '',
-        },
+        articleId: this.$route.params.id,
+        comment:{},
     }
 },
 
@@ -54,15 +43,15 @@ methods: {
 
     onSubmit() {
         const fd = new FormData()
-        fd.append('title'   ,this.article.title)
-        fd.append('content' ,this.article.content)
+        fd.append('comment'   ,this.comment.comment)
+        fd.append('article'   ,this.articleId)
          
         axios
-            .post('http://127.0.0.1:8000/api/v1/articles/',fd,
+            .post('http://127.0.0.1:8000/api/v1/comments/',fd,
                 { headers: {'Authorization': 'Bearer ' + this.user.access_token }}, 
             )
             .then( response => {
-                alert("Article " + this.article.title  +" successfully created")
+                alert("Comment " + this.comment.comment  +" successfully posted")
             })
             .catch((err) => {
                 console.log(err.response.data); 
@@ -76,7 +65,6 @@ computed:{
 },
 }
    
-
 </script>
  
 <style scoped>
@@ -86,7 +74,7 @@ h1{
 }
 
 .content{
-    height: 450px;
+    height: 250px;
 }
  
 </style>

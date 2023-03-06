@@ -14,9 +14,13 @@
             
                
             </v-card>
-            <v-btn color="purple" class="mb-1" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
-                            Comment 
-            </v-btn>
+            
+            <router-link :to="{name: 'CommentCreateView',params: {id: articleId}}">
+                <v-btn color="purple" class="mb-1" 
+                    :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                        Comment 
+                </v-btn>
+            </router-link>
         </v-col>
     </v-row>
 
@@ -24,8 +28,8 @@
         <h1 class="mt-n10"> Comments </h1>
     </v-row>
 
-     <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n8">
-        <v-col cols="8" >
+     <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n6">
+        <v-col cols="10" >
 
             <v-card height="60" color="lime-lighten-4" class="mb-5 commentCard ">        
              {{ comment.author.username }} : 
@@ -51,26 +55,21 @@ export default{
             articleId: this.$route.params.id,
         }
     },
-
     mounted(){
         axios
         .get('http://127.0.0.1:8000/api/v1/articles/'+this.articleId+'/',
-
         )
         .then(response => (this.article = response.data))
    },
 }
-
 </script>
 
 <style scoped>
-
 h1,h2{
     color: rgb(42, 137, 137);
     text-align: center;
   
 }
-
 .articleCard {
     border-left: 6px solid rgb(138, 100, 173) !important;
     border-right: 6px solid rgb(138, 100, 173) !important;
@@ -79,9 +78,6 @@ h1,h2{
 .commentCard {
     border-left: 6px solid rgb(138, 100, 173) !important;
     border-right: 6px solid rgb(138, 100, 173) !important;
-
     border-radius: 2px 4px 2px 4px;
 }
-
-
 </style>
