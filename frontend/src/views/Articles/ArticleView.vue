@@ -31,7 +31,7 @@
      <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n6">
         <v-col cols="10" >
 
-            <v-card height="60" color="lime-lighten-4" class="mb-5 commentCard ">        
+            <v-card height="60"  class="mb-5 commentCard ">        
              {{ comment.author.username }} : 
                 
                <v-card-title class="text-center">

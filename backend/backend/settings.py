@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'dj_rest_auth',         #login - logout endpoints
     'rest_framework.authtoken',
+    'drf_spectacular',
 
     #user registration
     'allauth',  
@@ -160,7 +161,7 @@ AUTH_USER_MODEL = 'users.User'
 
 ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter' # for custom user registration
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # all auth
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # all auth
 
 SITE_ID = 1 #all-auth
 
@@ -177,11 +178,19 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=25),
 }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Lonkodon',
+    'DESCRIPTION': 'Not Linkedin, Lonkodon',
+    'VERSION': '1.0.0',
+ }
+
 
 CORS_ORIGIN_ALLOW_ALL = True
