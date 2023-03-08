@@ -43,7 +43,7 @@ methods:{
                 {headers: {'Authorization': 'Bearer ' + this.user.access_token}}  
             )
             .catch((err) => {
-             console.log(err.response.data);
+                console.log(err.response.data);
             })
 
             this.message = ""

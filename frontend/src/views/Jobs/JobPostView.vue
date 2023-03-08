@@ -89,6 +89,7 @@ import { useAppStore } from '@/store/app';
                     .catch((err) => {
                         console.log(err.response.data); 
                     });
+                    this.$router.push('/jobs')
             },
         },
 

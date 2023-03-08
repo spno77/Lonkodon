@@ -1,8 +1,10 @@
 // Utilities
 import { defineStore } from 'pinia'
+import { createRouter, createWebHistory } from 'vue-router'
 import  axios  from 'axios'
 
 export const useAppStore = defineStore('app', {
+  
   state: () => ({
     user: {},
     isLoggedIn: false,
@@ -21,6 +23,7 @@ export const useAppStore = defineStore('app', {
               this.user = response.data
             })
             this.isLoggedIn = true
+            this.router.push('/')
     },
 
     logoutUser(){
