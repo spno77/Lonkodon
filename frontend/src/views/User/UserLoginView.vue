@@ -17,7 +17,7 @@
         </v-form>
     </v-sheet>
 
-    <v-btn @click.prevent ="loginUser(this.user)" color="cyan"   rounded="lg"
+    <v-btn @click.prevent ="loginRedirect(this.user);" color="cyan"   rounded="lg"
         :style="{left: '50%', transform:'translateX(-50%)'}"> 
                     Login
     </v-btn>
@@ -25,7 +25,7 @@
 </template>
   
 <script>
-import { mapActions, mapState, mapStores } from 'pinia';
+import { mapActions,mapStores } from 'pinia';
 import { useAppStore } from '@/store/app';
 
 export default {
@@ -41,11 +41,17 @@ data() {
 
 computed:{
     ...mapStores(useAppStore),
-    ...mapState(useAppStore,['user'])
 },
 
 methods:{
-    ...mapActions(useAppStore,['loginUser'])
+    ...mapActions(useAppStore,['loginUser']),
+
+    loginRedirect(userLogin){
+        this.loginUser(userLogin)
+        if(this.user.username !== ''){
+            this.$router.push('/')
+        }
+    }
 }
 }
 

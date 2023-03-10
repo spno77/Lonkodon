@@ -23,7 +23,6 @@ export const useAppStore = defineStore('app', {
               this.user = response.data
             })
             this.isLoggedIn = true
-            this.router.push('/')
     },
 
     logoutUser(){

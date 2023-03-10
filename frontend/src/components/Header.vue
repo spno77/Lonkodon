@@ -41,7 +41,7 @@
         
         <v-list-item v-if="isLoggedIn">
           <v-list-item-title>
-            <v-btn @click.prevent="logoutUser" color="cyan" block> Log out </v-btn>
+            <v-btn @click.prevent="logoutRedirect()" color="cyan" block> Log out </v-btn>
           </v-list-item-title>
         </v-list-item>
       </v-list>
@@ -56,18 +56,21 @@ import { mapActions, mapState, mapStores } from 'pinia';
 import { useAppStore } from '@/store/app';
 
 export default{
-  name: 'Header',
+name: 'Header',
 
-  computed:{
-      ...mapStores(useAppStore),
-      ...mapState(useAppStore,['user','loggedUser','isLoggedIn']),
-    },
-    methods:{
-      ...mapActions(useAppStore,['logoutUser'])
+computed:{
+    ...mapStores(useAppStore),
+    ...mapState(useAppStore,['user','loggedUser','isLoggedIn']),
+},
+
+methods:{
+    ...mapActions(useAppStore,['logoutUser']),
+    
+    logoutRedirect(){
+        this.logoutUser()
+        this.$router.push('/')
     }
-
-
-
+}
 
 }
 </script>
