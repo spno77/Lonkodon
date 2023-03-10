@@ -66,7 +66,8 @@
                     </div>
                 </v-col>
                     
-                <v-btn @click="apply(job.id,index)" color="success" :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
+                <v-btn class="mt-4" @click="apply(job,index)" color="success" 
+                    :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
                         apply
                 </v-btn>
             
@@ -92,14 +93,18 @@ data() {
 },
 
 methods:{
-    apply(jobId,index){
+    apply(job,index){
         axios.
             post('http://127.0.0.1:8000/api/v1/applications/',{
                 source: this.user.id,
-                job: jobId, 
+                job: job.id, 
             },
                 { headers: {'Authorization': 'Bearer ' + this.user.access_token }}  
             )
+            .then( response => {
+                alert("Successful application for " + job.title)
+            })
+
             this.jobs.splice(index,1)
     }
 },
@@ -107,6 +112,7 @@ methods:{
 computed:{
     ...mapStores(useAppStore),
     ...mapState(useAppStore,['user']),
+
     numPages() {
         return Math.ceil(this.jobs.length / this.pageSize);
     },

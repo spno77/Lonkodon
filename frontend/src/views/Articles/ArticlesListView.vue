@@ -75,7 +75,6 @@ data() {
 
 methods:{
 	
-
 },
 
 computed:{

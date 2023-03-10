@@ -10,13 +10,11 @@
                 <v-card-text class="text-center mt-4">
                     {{ article.content }}
                 </v-card-text>
-                                    
-            
-               
+                                
             </v-card>
             
             <router-link :to="{name: 'CommentCreateView',params: {id: articleId}}">
-                <v-btn color="purple" class="mb-1" 
+                <v-btn v-show="this.user" color="purple" class="mb-1" 
                     :style="{left: '50%', bottom: '5%', transform:'translateX(-50%)'}">
                         Comment 
                 </v-btn>
@@ -24,21 +22,16 @@
         </v-col>
     </v-row>
 
-    <v-row justify="center" class="mb-10">
-        <h1 class="mt-n10"> Comments </h1>
-    </v-row>
-
-     <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n6">
+    <v-row v-for=" (comment,index) in article.comments" justify="center" class="mt-n6">
         <v-col cols="10" >
 
             <v-card height="60"  class="mb-5 commentCard ">        
-             {{ comment.author.username }} : 
+             <b class="ml-3"> {{ comment.author.username }} : </b>
                 
                <v-card-title class="text-center">
                 <p> {{ comment.comment }} </p> 
                </v-card-title>
               
-                                    
             </v-card>
         </v-col>
     </v-row>
@@ -47,6 +40,9 @@
 
 <script>
 import axios from 'axios';
+import { mapState, mapStores } from 'pinia';
+import { useAppStore } from '@/store/app';
+
 export default{
   
     data() {
@@ -55,12 +51,19 @@ export default{
             articleId: this.$route.params.id,
         }
     },
+
     mounted(){
         axios
         .get('http://127.0.0.1:8000/api/v1/articles/'+this.articleId+'/',
         )
         .then(response => (this.article = response.data))
-   },
+    },
+
+    computed:{
+        ...mapStores(useAppStore),
+        ...mapState(useAppStore,['user']),
+    }
+
 }
 </script>
 
